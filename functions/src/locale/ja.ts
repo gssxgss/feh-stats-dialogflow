@@ -1,3 +1,5 @@
+import {divideBoonBane, combineBoonBane} from '../utils';
+
 const words = {
   hp: 'HP',
   atk: '攻撃',
@@ -18,7 +20,7 @@ const tutorial =`
 レアリティ、レベル、スキルの有無と英雄名を教えて頂ければ、該当する英雄の基準値を返答します。
 `;
 
-const welcome = 'どの英雄を調べたいですか？';
+const welcome = '<speak>どの英雄を調べたいですか？<break time="500ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、私にお聞きください。</speak>';
 
 const error = '申し訳ございません。エラーが発生しています。';
 
@@ -33,6 +35,29 @@ const ivRes = ({rarity, level, name, stats}) => `
   魔防 ${stats.res}。
 </speak>`;
 
+const boonBaneRes = ({name, variation}):string  => {
+  // variation: {"hp":0,"atk":0,"spd":0,"def":0,"res":0}
+  const groupedData = divideBoonBane(variation);
+
+  if (!Object.keys(groupedData))
+    return `<speak>${name}は得意と不得意なステータスがありません。</speak>`;
+
+  let res = '${name}の得意は';
+  if (groupedData.boon) {
+    res += combineBoonBane(words, groupedData.boon, 'と') + '、';
+  } else {
+    res += 'なし、'
+  }
+  res += '不得意は';
+  if (groupedData.bane) {
+    res += combineBoonBane(words, groupedData.bane, 'と') + 'です。';
+  } else {
+    res += 'ありません。'
+  }
+  return `<speak>${res}</speak>`;
+};
+
+
 const notFoundRes = ({rarity, level, name}) => `${rarity}、${level}の${name}の基準値が見つかりません`;
 
 export {
@@ -43,4 +68,5 @@ export {
   ivRes,
   notFoundRes,
   continueRes,
+  boonBaneRes,
 };

@@ -1,12 +1,12 @@
 import * as ja from './locale/ja';
 import * as en from './locale/en';
-import {user} from "firebase-functions/lib/providers/auth";
+// import {user} from "firebase-functions/lib/providers/auth";
 
 const DATA = require('../data.json');
 
 const localeData = {ja, en};
 
-export class FehStas {
+export class FehStats {
 
   static tutorial(userLocale): string {
     const lang: string = this.getLang(userLocale);
@@ -24,11 +24,11 @@ export class FehStas {
   }
 
   static isContinue(userLocale): string {
-    const lang:string = this.getLang(userLocale);
+    const lang: string = this.getLang(userLocale);
     return localeData[lang].continueRes;
   }
 
-  static getIV(userLocale, {rarityKey, levelKey, nameKey: nameKey, isEqp}): string {
+  static getIV(userLocale, {rarityKey, levelKey, nameKey, isEqp}): string {
     const lang: string = this.getLang(userLocale);
     const locale: any = localeData[lang];
 
@@ -42,6 +42,17 @@ export class FehStas {
 
     if (!stats) return locale.notFoundRes({rarity, level, name});
     return locale.ivRes({rarity, level, name, stats});
+  }
+
+  static getBoonBane(userLocale, {nameKey}): string {
+    const lang: string = this.getLang(userLocale);
+    const locale: any = localeData[lang];
+
+    const chara = DATA[nameKey];
+    const name = chara.name[lang];
+    const variation = chara['stats_variation'];
+
+    return locale.BoonBaneRes({name, variation});
   }
 
   /**

@@ -1,3 +1,5 @@
+import {combineBoonBane, divideBoonBane} from "../utils";
+
 const words = {
   hp: 'HP',
   atk: 'attack',
@@ -20,7 +22,7 @@ The default hero's stats is set in 5 stars, level 1 and equipped.
 To finish this application, just ask me to "stop".
 `;
 
-const welcome = 'Which hero\'s stats do you want search?';
+const welcome = '<speak>Which hero\'s stats do you want search?<break time="1s"/> Please ask me like <break time="500ms"/> "Tell me about Alfonse in 5 stars, level 40".</speak>';
 
 const error = 'I\'m so sorry that an error has occurred.';
 
@@ -35,6 +37,27 @@ const ivRes = ({rarity, level, name, stats}) => `<speak>
   ${stats.res} resistance.
 </speak>`;
 
+const boonBaneRes = ({name, variation}):string  => {
+  const groupedData = divideBoonBane(variation);
+
+  if (!Object.keys(groupedData))
+    return `<speak>${name} has no boons or banes status.</speak>`;
+
+  let res = '${name} has ';
+  if (groupedData.boon) {
+    res += combineBoonBane(words, groupedData.boon, ' and ') + 'boons, ';
+  } else {
+    res += 'no boons, '
+  }
+  res += 'and ';
+  if (groupedData.bane) {
+    res += combineBoonBane(words, groupedData.bane, ' and ') + 'banes';
+  } else {
+    res += 'no banes.'
+  }
+  return `<speak>${res}</speak>`;
+};
+
 const notFoundRes = ({rarity, level, name}) => `The stats of ${rarity} ${level} ${name} if not found.`;
 
 export {
@@ -45,4 +68,5 @@ export {
   ivRes,
   notFoundRes,
   continueRes,
+  boonBaneRes,
 };
