@@ -1,3 +1,5 @@
+import * as reduce from 'lodash.reduce';
+
 interface StatsVariation {
   hp: number;
   atk: number;
@@ -13,9 +15,9 @@ interface BoonBaneGroup {
 
 // n = {hp: 0, atk: 0, spd: 0, def: 0, res: 0}
 export const divideBoonBane = (variation: StatsVariation): BoonBaneGroup => {
-  const group = Object.entries(variation).reduce((root, item) => {
+  return reduce(variation, (group, val, key) => {
     let groupKey;
-    switch (item[1]) {
+    switch (val) {
       case 1:
         groupKey = 'boon';
         break;
@@ -23,13 +25,12 @@ export const divideBoonBane = (variation: StatsVariation): BoonBaneGroup => {
         groupKey = 'bane';
         break;
     }
-    if (!groupKey) return root;
+    if (!groupKey) return group;
 
-    if (!root[groupKey]) root[groupKey] = [];
-    root[groupKey].push(item[0]);
-    return root;
+    if (!group[groupKey]) group[groupKey] = [];
+    group[groupKey].push(key);
+    return group;
   }, {});
-  return group;
 };
 
 export const combineBoonBane = (dict: object, keys: string[], conjunction: string): string => {

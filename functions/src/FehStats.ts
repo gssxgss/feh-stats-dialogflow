@@ -52,7 +52,7 @@ export class FehStats {
     const name = chara.name[lang];
     const variation = chara['stats_variation'];
 
-    return locale.BoonBaneRes({name, variation});
+    return locale.boonBaneRes({name, variation});
   }
 
   /**

@@ -20,7 +20,7 @@ const tutorial =`
 レアリティ、レベル、スキルの有無と英雄名を教えて頂ければ、該当する英雄の基準値を返答します。
 `;
 
-const welcome = '<speak>どの英雄を調べたいですか？<break time="500ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、私にお聞きください。</speak>';
+const welcome = '<speak>どの英雄を調べたいですか？<break time="600ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、私にお聞きください。</speak>';
 
 const error = '申し訳ございません。エラーが発生しています。';
 
@@ -39,20 +39,20 @@ const boonBaneRes = ({name, variation}):string  => {
   // variation: {"hp":0,"atk":0,"spd":0,"def":0,"res":0}
   const groupedData = divideBoonBane(variation);
 
-  if (!Object.keys(groupedData))
+  if (!Object.keys(groupedData).length)
     return `<speak>${name}は得意と不得意なステータスがありません。</speak>`;
 
-  let res = '${name}の得意は';
+  let res = `${name}の得意は`;
   if (groupedData.boon) {
     res += combineBoonBane(words, groupedData.boon, 'と') + '、';
   } else {
-    res += 'なし、'
+    res += 'なし、';
   }
   res += '不得意は';
   if (groupedData.bane) {
     res += combineBoonBane(words, groupedData.bane, 'と') + 'です。';
   } else {
-    res += 'ありません。'
+    res += 'ありません。';
   }
   return `<speak>${res}</speak>`;
 };

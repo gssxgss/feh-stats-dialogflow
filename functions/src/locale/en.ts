@@ -12,7 +12,7 @@ const words = {
   lv1: 'level 1',
   lv40: 'level 40',
   eqp: 'equipped',
-  uneqp: 'unequipped'
+  uneqp: 'unequipped',
 };
 
 const tutorial = `
@@ -40,20 +40,20 @@ const ivRes = ({rarity, level, name, stats}) => `<speak>
 const boonBaneRes = ({name, variation}):string  => {
   const groupedData = divideBoonBane(variation);
 
-  if (!Object.keys(groupedData))
-    return `<speak>${name} has no boons or banes status.</speak>`;
+  if (!Object.keys(groupedData).length)
+    return `<speak>${name} has no boons or banes.</speak>`;
 
-  let res = '${name} has ';
+  let res = `${name} has `;
   if (groupedData.boon) {
-    res += combineBoonBane(words, groupedData.boon, ' and ') + 'boons, ';
+    res += combineBoonBane(words, groupedData.boon, ' and ') + ' boons, ';
   } else {
-    res += 'no boons, '
+    res += 'no boons, ';
   }
   res += 'and ';
   if (groupedData.bane) {
-    res += combineBoonBane(words, groupedData.bane, ' and ') + 'banes';
+    res += combineBoonBane(words, groupedData.bane, ' and ') + ' banes';
   } else {
-    res += 'no banes.'
+    res += 'no banes.';
   }
   return `<speak>${res}</speak>`;
 };
