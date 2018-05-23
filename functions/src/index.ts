@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import {dialogflow, Parameters} from 'actions-on-google';
+import {dialogflow, Parameters, Suggestions} from 'actions-on-google';
 import {FehStats} from "./FehStats";
 
 interface QueryDataParameters extends Parameters {
@@ -24,6 +24,7 @@ const app = dialogflow();
 app.intent('welcome', (conv) => {
   if (!conv.user.last.seen) conv.ask(FehStats.tutorial(conv.user.locale));
   conv.ask(FehStats.greet(conv.user.locale));
+  conv.ask(new Suggestions(FehStats.commonSuggestions(conv.user.locale)));
 });
 
 /**
@@ -31,6 +32,7 @@ app.intent('welcome', (conv) => {
  */
 app.intent('help', conv => {
   conv.ask(FehStats.tutorial(conv.user.locale));
+  conv.ask(new Suggestions(FehStats.commonSuggestions(conv.user.locale)));
 });
 
 /**
@@ -46,6 +48,7 @@ app.intent<QueryDataParameters>('query_chara_data', (conv, {name, rarity, level,
   const res = FehStats.getIV(locale, {nameKey: name, rarityKey, levelKey, isEqp});
   conv.ask(res);
   conv.ask(FehStats.isContinue(locale));
+  conv.ask(new Suggestions(FehStats.commonSuggestions(conv.user.locale)));
 });
 
 /**
@@ -56,6 +59,7 @@ app.intent<QueryBoonBaneParameters>('query_chara_boon_bane', (conv, {name}) => {
   const res = FehStats.getBoonBane(locale, {nameKey: name});
   conv.ask(res);
   conv.ask(FehStats.isContinue(locale));
+  conv.ask(new Suggestions(FehStats.commonSuggestions(conv.user.locale)));
 });
 
 /**

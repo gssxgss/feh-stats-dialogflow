@@ -54,6 +54,13 @@ export class FehStats {
     return locale.boonBaneRes({name, variation});
   }
 
+  static commonSuggestions(userLocale): string[] {
+    const lang: string = this.getLang(userLocale);
+    const locale: any = localeData[lang];
+
+    return locale.commonSuggestions;
+  }
+
   /**
    * get user language
    * @param {string} userLocale

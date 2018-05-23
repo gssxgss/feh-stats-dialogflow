@@ -17,7 +17,9 @@ const words = {
 
 const tutorial =`
 はじめまして。このアプリは、スマホゲーム「ファイアーエムブレムヒーローズ」のキャラクター個体を確認することができます。
-レアリティ、レベル、スキルの有無と英雄名を教えて頂ければ、該当する英雄の基準値を返答します。
+「星5、レベル40のアルフォンス」のように、レアリティ、レベル、スキルの有無と英雄名を教えて頂ければ、該当する英雄の基準値を回答します。
+なお、英雄の得意と不得意を確認する時、「シャロンの得意と不得意」のように、お聞きください。
+アプリを終了する時に「終了」をお命令してください。
 `;
 
 const welcome = '<speak>どの英雄を調べたいですか？<break time="600ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、私にお聞きください。</speak>';
@@ -60,6 +62,8 @@ const boonBaneRes = ({name, variation}):string  => {
 
 const notFoundRes = ({rarity, level, name}) => `${rarity}、${level}の${name}の基準値が見つかりません`;
 
+const commonSuggestions = ['星5レベル40', '星4レベル1', '得意と不得意', 'ヘルプ', '終了'];
+
 export {
   words,
   tutorial,
@@ -69,4 +73,5 @@ export {
   notFoundRes,
   continueRes,
   boonBaneRes,
+  commonSuggestions,
 };
