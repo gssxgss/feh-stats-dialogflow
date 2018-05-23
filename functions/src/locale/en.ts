@@ -51,7 +51,7 @@ const boonBaneRes = ({name, variation}):string  => {
   }
   res += 'and ';
   if (groupedData.bane) {
-    res += combineBoonBane(words, groupedData.bane, ' and ') + ' banes';
+    res += combineBoonBane(words, groupedData.bane, ' and ') + ' banes.';
   } else {
     res += 'no banes.';
   }

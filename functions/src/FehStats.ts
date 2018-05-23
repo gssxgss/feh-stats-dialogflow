@@ -1,6 +1,5 @@
 import * as ja from './locale/ja';
 import * as en from './locale/en';
-// import {user} from "firebase-functions/lib/providers/auth";
 
 const DATA = require('../data.json');
 

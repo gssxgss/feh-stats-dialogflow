@@ -40,7 +40,7 @@ const boonBaneRes = ({name, variation}):string  => {
   const groupedData = divideBoonBane(variation);
 
   if (!Object.keys(groupedData).length)
-    return `<speak>${name}は得意と不得意なステータスがありません。</speak>`;
+    return `<speak>${name}は得意と不得意がありません。</speak>`;
 
   let res = `${name}の得意は`;
   if (groupedData.boon) {
