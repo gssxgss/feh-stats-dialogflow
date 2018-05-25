@@ -35,7 +35,8 @@ const ivRes = ({rarity, level, name, stats}) => `<speak>
   ${stats.atk} attack,<break time="500ms"/>
   ${stats.spd} speed,<break time="500ms"/>
   ${stats.def} defense,<break time="500ms"/>
-  ${stats.res} resistance.
+  ${stats.res} resistance,
+  ${stats.hp + stats.atk + stats.spd + stats.def + stats.res} in total.
 </speak>`;
 
 const boonBaneRes = ({name, variation}):string  => {
@@ -61,7 +62,7 @@ const boonBaneRes = ({name, variation}):string  => {
 
 const notFoundRes = ({rarity, level, name}) => `The stats of ${rarity} ${level} ${name} if not found.`;
 
-const commonSuggestions = ['5 stars level 40', '4 stars level 1', 'boon and bane', 'Help', 'Cancel'];
+const commonSuggestions = ['5star Lv1', '5star Lv40', '4star Lv1', 'Boon and Bane', 'Help', 'Cancel'];
 
 export {
   words,

@@ -34,7 +34,8 @@ const ivRes = ({rarity, level, name, stats}) => `
   攻撃 ${stats.atk}、<break time="300ms"/>
   速さ ${stats.spd}、<break time="300ms"/>
   守備 ${stats.def}、<break time="300ms"/>
-  魔防 ${stats.res}。
+  魔防 ${stats.res}、<break time="300ms"/>
+  合計 ${stats.hp + stats.atk + stats.spd + stats.def + stats.res}。
 </speak>`;
 
 const boonBaneRes = ({name, variation}):string  => {
@@ -62,7 +63,7 @@ const boonBaneRes = ({name, variation}):string  => {
 
 const notFoundRes = ({rarity, level, name}) => `${rarity}、${level}の${name}の基準値が見つかりません`;
 
-const commonSuggestions = ['星5レベル40', '星4レベル1', '得意と不得意', 'ヘルプ', '終了'];
+const commonSuggestions = ['星5レベル1', '星5レベル40', '星4レベル1', '得意と不得意', 'ヘルプ', '終了'];
 
 export {
   words,
