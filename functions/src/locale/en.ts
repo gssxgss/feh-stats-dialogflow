@@ -62,7 +62,7 @@ const boonBaneRes = ({name, variation}):string  => {
 
 const notFoundRes = ({rarity, level, name}) => `The stats of ${rarity} ${level} ${name} if not found.`;
 
-const commonSuggestions = ['5star Lv1', '5star Lv40', '4star Lv1', 'Boon and Bane', 'Help', 'Cancel'];
+const commonSuggestions = ['5 stars level 40', '4 stars level 1', '3 stars level 1', 'Boon and Bane', 'Help', 'Cancel'];
 
 export {
   words,

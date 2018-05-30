@@ -63,7 +63,7 @@ const boonBaneRes = ({name, variation}):string  => {
 
 const notFoundRes = ({rarity, level, name}) => `${rarity}、${level}の${name}の基準値が見つかりません`;
 
-const commonSuggestions = ['星5レベル1', '星5レベル40', '星4レベル1', '得意と不得意', 'ヘルプ', '終了'];
+const commonSuggestions = ['星5レベル40', '星4レベル1', '星3レベル1', '得意と不得意', 'ヘルプ', '終了'];
 
 export {
   words,
