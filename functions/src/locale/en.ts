@@ -16,14 +16,14 @@ const words = {
 };
 
 const tutorial = `
-Hello. You can use this Google Assistant Action to search the stats of heroes in the mobile game, Fire Emblem Heroes.
-Ask me like "Tell me about Alfonse, in 5 stars, level 40 and unequipped" or just "Sharena.
-The default hero's stats is set in 5 stars, level 1 and equipped.
-Also heroes' boons and banes are available, ask me like "Tell me Anna's boon and bane".
-To finish this application, just ask me to "cancel".
+Hello. This Google Assistant Action is made to search the standard stats of heroes in the mobile game, Fire Emblem Heroes.
+Please ask like "Tell me about Alfonse, in 5 stars, level 40 and unequipped", or just simple "Sharena".
+The default hero's stats is set in 5 stars, level 1 and equipped. The stats above level 40 are not included.
+Also heroes' boons and banes are available. Please ask like "Tell me Anna's boon and bane" for heroes' boons and banes information.
+To finish this application, please say "cancel" or "finish".
 `;
 
-const welcome = '<speak>Which hero\'s stats do you want search?<break time="1s"/> Please ask me like <break time="500ms"/> "Tell me about Alfonse in 5 stars, level 40".</speak>';
+const welcome = '<speak>Which hero\'s stats do you want search?<break time="1s"/> Please ask like <break time="500ms"/> "Tell me about Alfonse in 5 stars, level 40".</speak>';
 
 const error = 'I\'m so sorry that an error has occurred.';
 

@@ -22,7 +22,7 @@ const tutorial =`
 アプリを終了する時に「終了」をお命令してください。
 `;
 
-const welcome = '<speak>どの英雄を調べたいですか？<break time="600ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、私にお聞きください。</speak>';
+const welcome = '<speak>どの英雄を調べたいですか？<break time="600ms" />「星5、レベル40のアルフォンス」<break time="200ms" />のように、お聞きください。</speak>';
 
 const error = '申し訳ございません。エラーが発生しています。';
 
