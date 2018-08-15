@@ -11,9 +11,9 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "actions-on-google": "^2.1.2",
+    "actions-on-google": "^2.2.0",
     "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.0.3",
+    "firebase-functions": "^2.0.5",
     "lodash.reduce": "^4.6.0"
   },
   "devDependencies": {
